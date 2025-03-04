@@ -909,13 +909,10 @@ mod tests {
 				)
 				.unwrap();
 
-			let zerocheck_eq_ind = EqIndPartialEval::new(
-				n_vars - skip_rounds,
-				zerocheck_challenges[skip_rounds..].to_vec(),
-			)
-			.unwrap()
-			.multilinear_extension::<F, _>(&backend)
-			.unwrap();
+			let zerocheck_eq_ind =
+				EqIndPartialEval::new(zerocheck_challenges[skip_rounds..].to_vec())
+					.multilinear_extension::<F, _>(&backend)
+					.unwrap();
 
 			// naive computation of the univariate skip output
 			let round_evals_len = 4usize << skip_rounds;

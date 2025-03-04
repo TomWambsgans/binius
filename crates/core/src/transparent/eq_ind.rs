@@ -19,12 +19,8 @@ pub struct EqIndPartialEval<F: Field> {
 }
 
 impl<F: Field> EqIndPartialEval<F> {
-	// TODO: n_vars param here is unnecessary
-	pub fn new(n_vars: usize, r: Vec<F>) -> Result<Self, Error> {
-		if r.len() != n_vars {
-			bail!(Error::IncorrectQuerySize { expected: n_vars });
-		}
-		Ok(Self { n_vars, r })
+	pub fn new(r: Vec<F>) -> Self {
+		Self { n_vars: r.len(), r }
 	}
 
 	pub const fn n_vars(&self) -> usize {
@@ -95,7 +91,7 @@ mod tests {
 		let backend = make_portable_backend();
 
 		// Get Multivariate Poly version of eq_r
-		let eq_r_mvp = EqIndPartialEval::new(n_vars, r).unwrap();
+		let eq_r_mvp = EqIndPartialEval::new(r);
 		let eval_mvp = eq_r_mvp.evaluate(eval_point).unwrap();
 
 		// Get MultilinearExtension version of eq_r
