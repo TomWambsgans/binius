@@ -784,7 +784,7 @@ impl<F: TowerField> LinearCombination<F> {
 pub struct MultilinearComposition<F: TowerField> {
 	#[get_copy = "pub"]
 	n_vars: usize, // μ
-	pub(crate) inner: Vec<OracleId>,                 // M1, M2, ..., Mn
+	pub(crate) inner: Vec<OracleId>,      // M1, M2, ..., Mn
 	pub(crate) comp: ArithCircuitPoly<F>, // C
 }
 

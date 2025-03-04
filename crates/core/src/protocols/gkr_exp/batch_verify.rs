@@ -215,7 +215,8 @@ where
 			EvaluationOrder::HighToLow => sumcheck_output.challenges[..n_vars].to_vec(),
 		};
 
-		let expected_eq_ind_eval = EqIndPartialEval::new(current_eval_point).evaluate(&eval_point)?;
+		let expected_eq_ind_eval =
+			EqIndPartialEval::new(current_eval_point).evaluate(&eval_point)?;
 
 		let eq_ind_eval = multilinear_evals
 			.pop()
